@@ -84,3 +84,6 @@ async def analyze_resume(req: ResumeRequest):
         gaps=gaps,
         recommendations=recommendations
     )
+    @app.get("/")
+async def root():
+    return {"message": "Resume Parser API is alive!"}
