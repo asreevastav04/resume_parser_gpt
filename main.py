@@ -67,7 +67,6 @@ def recommend_from_gaps(gaps: List[str]) -> List[str]:
     if "No leadership evidence" in gaps:
         recs.append("Show initiatives you owned or led")
     return recs
-
 # FastAPI route
 @app.post("/parse-resume", response_model=ResumeResponse)
 async def analyze_resume(req: ResumeRequest):
@@ -84,6 +83,8 @@ async def analyze_resume(req: ResumeRequest):
         gaps=gaps,
         recommendations=recommendations
     )
-    @app.get("/")
+
+# ROOT route to satisfy Render health check
+@app.get("/")
 async def root():
     return {"message": "Resume Parser API is alive!"}
